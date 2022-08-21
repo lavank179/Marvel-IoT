@@ -2,7 +2,7 @@ $(document).ready(function() {
     setInterval(function() {
         let [v1, v2, v3] = getInputValues("filterSen1");
         changeAlert("filterSen1", v1, v2, v3);
-        if (v1.length == 10 && v2.length == 10) getDataAll(v1, v2, v3, 30, "Temperature", "s1chart", "sensors");
+        input_data_arr[9] = [v1, v2, v3, 30, "Temperature", "s1chart", "sensors"];
     }, 500);
 });
 
@@ -10,7 +10,7 @@ $(document).ready(function() {
     setInterval(function() {
         let [v1, v2, v3] = getInputValues("filterSen2");
         changeAlert("filterSen2", v1, v2, v3);
-        if (v1.length == 10 && v2.length == 10) getDataAll(v1, v2, v3, 31, "Humidity", "s2chart", "sensors");
+        input_data_arr[10] = [v1, v2, v3, 31, "Humidity", "s2chart", "sensors"];
     }, 500);
 });
 
@@ -18,7 +18,7 @@ $(document).ready(function() {
     setInterval(function() {
         let [v1, v2, v3] = getInputValues("filterSen3");
         changeAlert("filterSen3", v1, v2, v3);
-        if (v1.length == 10 && v2.length == 10) getDataAll(v1, v2, v3, 32, "Soil Moisture", "s3chart", "sensors");
+        input_data_arr[11] = [v1, v2, v3, 32, "Soil Moisture", "s3chart", "sensors"];
     }, 500);
 });
 

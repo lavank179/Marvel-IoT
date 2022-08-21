@@ -46,6 +46,7 @@ db/
 #third-party dependancies and libraries
 public/assets/apexcharts/
 public/assets/MDBootstrap-pro/
+public/js/authUI/oauthGoogle.js
 
 # TypeScript v1 declaration files
 typings/

@@ -1,9 +1,9 @@
-var lights = [];
+var input_data_arr = [];
 $(document).ready(function() {
     document.querySelectorAll(".fetch-button").forEach((item, i) => {
         item.addEventListener("click", (event) => {
             console.log(item, i);
-            if(lights[i][0].length == 10 && lights[i][1].length == 10) getDataAll(...lights[i]);
+            if(input_data_arr[i][0].length == 10 && input_data_arr[i][1].length == 10) getDataAll(...input_data_arr[i]);
             else alert("Please give all the input details completely!");
         });
     });
@@ -127,7 +127,7 @@ $(document).ready(function() {
     setInterval(function() {
         let [v1, v2, v3] = getInputValues("filterLight1");
         changeAlert("filterLight1", v1, v2, v3);
-        lights[0] = [v1, v2, v3, 16, "Light 1", "l1chart", "lights"];
+        input_data_arr[0] = [v1, v2, v3, 16, "Light 1", "l1chart", "lights"];
     }, 500);
 });
 
@@ -136,7 +136,7 @@ $(document).ready(function() {
     setInterval(function() {
         let [v1, v2, v3] = getInputValues("filterLight2");
         changeAlert("filterLight2", v1, v2, v3);
-        lights[1] = [v1, v2, v3, 17, "Light 2", "l2chart", "lights"];
+        input_data_arr[1] = [v1, v2, v3, 17, "Light 2", "l2chart", "lights"];
     }, 500);
 });
 
@@ -145,7 +145,7 @@ $(document).ready(function() {
     setInterval(function() {
         let [v1, v2, v3] = getInputValues("filterLight3");
         changeAlert("filterLight3", v1, v2, v3);
-        lights[2] = [v1, v2, v3, 18, "Light 3", "l3chart", "lights"];
+        input_data_arr[2] = [v1, v2, v3, 18, "Light 3", "l3chart", "lights"];
     }, 500);
 });
 
@@ -154,7 +154,7 @@ $(document).ready(function() {
     setInterval(function() {
         let [v1, v2, v3] = getInputValues("filterLight4");
         changeAlert("filterLight4", v1, v2, v3);
-        lights[3] = [v1, v2, v3, 19, "Light 4", "l4chart", "lights"];
+        input_data_arr[3] = [v1, v2, v3, 19, "Light 4", "l4chart", "lights"];
     }, 500);
 });
 
@@ -163,7 +163,7 @@ $(document).ready(function() {
     setInterval(function() {
         let [v1, v2, v3] = getInputValues("filterLightAll");
         changeAlert("filterLightAll", v1, v2, v3);
-        lights[4] = [v1, v2, v3, 50, "All Lights Total", "l5chart", "lights"];
+        input_data_arr[4] = [v1, v2, v3, 50, "All input_data_arr Total", "l5chart", "lights"];
     }, 500);
 });
 
@@ -172,7 +172,7 @@ $(document).ready(function() {
     setInterval(function() {
         let [v1, v2, v3] = getInputValues("filterLightZones");
         changeAlert("filterLightAll", v1, v2, v3);
-        lights[5] = [v1, v2, v3, 60, "All Lights Zones", "l6chart", "lights"];
+        input_data_arr[5] = [v1, v2, v3, 60, "All input_data_arr Zones", "l6chart", "lights"];
     }, 500);
 });
 
