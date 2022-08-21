@@ -1,0 +1,121 @@
+#visualise{
+  font-family: "Poppins";
+}
+
+#mobile-head {
+  display: none;
+}
+
+#visualise #l1chart,
+#l2chart,
+#l3chart,
+#l4chart,
+#l5chart,
+#l6chart,
+#f1chart,
+#f2chart,
+#f3chart,
+#s1chart,
+#s2chart,
+#s3chart {
+  width: 100%;
+}
+
+@media (min-width: 990px) {
+  #visualise #l1chart,
+  #l2chart,
+  #l3chart,
+  #l4chart,
+  #l5chart,
+  #l6chart,
+  #f1chart,
+  #f2chart,
+  #f3chart,
+  #s1chart,
+  #s2chart,
+  #s3chart {
+    height: 550px;
+  }
+}
+@media (min-width: 576px) and (max-width: 990px) {
+  #visualise #l1chart,
+  #l2chart,
+  #l3chart,
+  #l4chart,
+  #l5chart,
+  #l6chart,
+  #f1chart,
+  #f2chart,
+  #f3chart,
+  #s1chart,
+  #s2chart,
+  #s3chart {
+    height: 350px;
+  }
+}
+@media (max-width: 576px) {
+  #visualise #l1chart,
+  #l2chart,
+  #l3chart,
+  #l4chart,
+  #l5chart,
+  #l6chart,
+  #f1chart,
+  #f2chart,
+  #f3chart,
+  #s1chart,
+  #s2chart,
+  #s3chart {
+    height: 250px;
+  }
+
+  #mobile-head {
+    color: #6ca16d;
+    display: block;
+  }
+}
+
+.popover {
+  border: 2px solid #4285f4;
+}
+
+.popover-content {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+.live2 {
+  position: absolute;
+  top: 5px;
+  left: 11px;
+  font-size: small;
+  background-color: black;
+  color: white;
+}
+
+#home .card-header {
+  height: 43px;
+  font-size: 20px;
+  color: white;
+  background-color: black;
+}
+
+#visualise .btn-secondary1 {
+  background-color: #00e396;
+}
+
+#visualise .nav #lg2 h6,
+#visualise .nav #lg3 h6,
+#visualise .nav #lg4 h6,
+#visualise .nav #lg5 h6,
+#visualise .nav #lg6 h6,
+#visualise .nav #fn2 h6,
+#visualise .nav #fn3 h6,
+#visualise .nav #tn2 h6,
+#visualise .nav #tn3 h6 {
+  color: white;
+}
+
+#visualise .nav a h6{
+  font-size: 1.2rem;
+}

@@ -1,0 +1,124 @@
+::placeholder {
+  color: #747f8a !important;
+  font-size: 13px;
+  opacity: 0.5 !important;
+}
+
+body {
+  background-image: linear-gradient(135deg, #99f3bd 10%, #28df99 100%);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: #333333;
+  min-height: 100%;
+  padding: 20px;
+  font-family: "Open Sans", sans-serif;
+}
+
+
+#authorize_button, #signout_button{
+  background: url(https://img.icons8.com/color/35/undefined/google-logo.png) no-repeat center left;
+  padding-left: 50px;
+  color: black;
+}
+.login-card {
+  margin: 0 auto;
+  width: 100%;
+  background: #ffffff;
+  border-radius: 10px;
+  align-content: center;
+  justify-content: center;
+  box-shadow: 0 0 20px 6px #090b6f85;
+}
+
+.detail-part {
+  color: #3b6479;
+  background-size: cover;
+  background-repeat: no-repeat;
+  text-align: center;
+}
+
+.detail-part .dele {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.detail-part p {
+  margin-top: 30px;
+}
+
+.detail-part span p {
+  font-weight: bold;
+}
+
+.detail-part span a {
+  background: #3b5998;
+  color: #ffffff;
+  margin-top: 10px;
+  padding: 10px 40px;
+  border-radius: 100px;
+  display: inline-block;
+  box-shadow: 0 3px 6px 1px #042d4657;
+}
+
+.detail-part span a:last-child {
+  background: #e1306c;
+  margin-left: 30px;
+}
+
+.logn-part h5 {
+  font-size: 2.7vmax;
+  line-height: 0;
+  color: #3b6479;
+}
+
+.logn-part #LoginSub {
+  background-color: #42c59d;
+}
+
+.center-text {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.logn-part {
+  padding: 30px;
+}
+
+.logo-cover img {
+  margin-bottom: 30px;
+}
+
+@media screen and (max-width: 1100px) {
+  .bg-login {
+    background-image: url(../assets/login-images/bg-mobile.jpg);
+  }
+}
+
+.reg .form-control {
+  box-shadow: none;
+}
+
+.log .form-control {
+  box-shadow: none;
+}
+
+.addGreen,
+.addGreen:focus {
+  box-shadow: none;
+  border: 2px green solid;
+}
+
+.addRed,
+.addRed:focus {
+  box-shadow: none;
+  border: 2px red solid;
+}
+
+.inl-bl {
+  display: inline-block;
+}

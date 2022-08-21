@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marvel IoT</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../assets/MDBootstrap-pro/MDB-Pro_4.11.0/css/mdb.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="shortcut icon" href="../assets/images/favicon.ico" />
+
+    <script src="../assets/MDBootstrap-pro/MDB-Pro_4.11.0/js/mdb.min.js"></script>
+    <link rel="stylesheet" href="../css/styl.css" />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/charts.css" />
+</head>
+
+<body id="hom">
+    <div class="wrapper">
+        <!-- Sidebar Holder -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <p>
+                    <img width="100%" height="100%" src="../assets/images/logo3.jpg" alt="marvel iot" />
+                </p>
+            </div>
+            <br />
+            <ul class="list-unstyled components men">
+                <li class="nav-item">
+                    <a class="home" href="home.html"><i class="fas fa-home"></i> Home </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="visualise" href="visualize.html"><i class="far fa-chart-bar"></i> Visualise </a>
+                </li>
+                <li class="nav-item">
+                    <a class="profile" href="profile.html"><i class="far fa-address-card"></i> Profile </a>
+                </li>
+                <li class="nav-item">
+                    <a class="contact" href="contact.html"><i class="fas fa-phone-square-alt"></i> Contact </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content Holder -->
+        <div id="content">
+            <nav class="navbar navbar-expand-lg navbar-light sticky-top" id="topNAV">
+                <button id="sidebarCollapse" class="btn btn-sm btn-outline-primary shadow-none"><i class="fas fa-align-left"></i></button>
+                <h3 class="ml-auto mr-auto" id="mobile-head">Marvel IoT</h3>
+                <button class="d-inline-block d-lg-none ml-auto btn btn-sm btn-outline-primary shadow-none" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i class="fas fa-align-right"></i></button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link btn-rounded1 btn btn-sm btn-outline-primary shadow-none" onclick="RefreshAll();" data-toggle="popover" data-content="Refresh All" data-placement="bottom" data-trigger="hover">
+                                <i class="fas fa-sync-alt d-inline"></i>
+                                <div class="d-lg-none d-md-block d-sm-block d-inline"> Refresh all data </div>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn-rounded1 btn btn-sm btn-outline-primary shadow-none" data-toggle="popover" data-content="Notifications" data-placement="bottom" data-trigger="hover">
+                                <i class="far fa-bell d-inline"></i>
+                                <div class="d-lg-none d-md-block d-sm-block d-inline">
+                                    Notifications
+                                </div>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn-rounded1 btn btn-sm btn-outline-primary shadow-none" data-toggle="popover" data-content="User Details" data-placement="bottom" data-trigger="hover">
+                                <i class="fas fa-user-circle d-inline"></i>
+                                <div class="d-lg-none d-md-block d-sm-block d-inline">
+                                    User Details
+                                </div>
+                            </a>
+                        </li>
+                        <li class="nav-item" id="logoutBTN1">
+                            <a class="nav-link btn-rounded1 btn btn-sm btn-outline-primary shadow-none" onclick="logout();" data-toggle="popover" data-content="Logout" data-placement="bottom" data-trigger="hover">
+                                <i class="fas fa-sign-out-alt d-inline"></i>
+                                <div class="d-lg-none d-md-block d-sm-block d-inline">
+                                    Logout
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="nav-item" id="logoutBTN2">
+                            <button class="btn btn-rounded1 btn-outline-primary btn-block" id="signout_button" style="display: none" data-toggle="popover" data-content="Logout from Google" data-placement="bottom" data-trigger="hover">
+                              <div style="color: black; font-weight: bold; margin-left: 30px;">SignOut</div>
+                            </button>
+                            <p id="authorize_button" style="display: none"></p>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="container-fluid">
+                <div id="visualise">
+                    <div class="card bg-dark">
+                        <div class="col-sm-12 LIGHT">
+                            <ul class="nav nav-tabs" id="bologna-listL" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="#g1" role="tab" aria-controls="description" aria-selected="true" id="lg1">
+                                        <h6>Light 1</h6>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#g2" role="tab" aria-controls="history" aria-selected="false" id="lg2">
+                                        <h6>Light 2</h6>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#g3" role="tab" aria-controls="deals" aria-selected="false" id="lg3">
+                                        <h6>Light 3</h6>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#g4" role="tab" aria-controls="deals" aria-selected="false" id="lg4">
+                                        <h6>Light 4</h6>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#g5" role="tab" aria-controls="deals" aria-selected="false" id="lg5">
+                                        <h6>All Lights</h6>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#g6" role="tab" aria-controls="deals" aria-selected="false" id="lg6">
+                                        <h6>Light Zones</h6>
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <div class="tab-content bg-dark">
+                                <div class="tab-pane" id="g1" role="tabpanel" aria-labelledby="history-tab">
+                                    <div class="filterLight1" role="alert">
+                                        <span class="alert alert-danger">
+                                          &nbsp;&nbsp;No data Found. please give the necessary
+                                          Input.
+                                        </span>
+                                    </div>
+                                    <div class="row filterLight1">
+                                        <div class="col-sm-2">
+                                            <div class="md-form">
+                                                <input placeholder="From Date" type="date" id="Fdate" class="form-control datepicker" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="md-form">
+                                                <input placeholder="To Date" type="date" id="Tdate" class="form-control datepicker" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2"></div>
+                                        <div class="col-sm-2">
+                                            <div class="md-form">
+                                                <button class="btn btn-primary btn-block btn-md fetch-button">
+                                                  <i class="fas fa-download"></i> Fetch Chart
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="md-form">
+                                                <button class="btn btn-secondary1 btn-block btn-md" onclick="getCSVdata('filterLight1', 16)">
+                                                  <i class="fas fa-download"></i> Download as CSV
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <select class="custom-select md-form" required id="Fselect">
+                                              <option value="date">Daily</option>
+                                              <option value="month">Monthly</option>
+                                              <option value="year">Yearly</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div id="l1chart"></div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane" id="g2" role="tabpanel" aria-labelledby="deals-tab">
+                                    <div class="filterLight2" role="alert">
+                                        <span class="alert alert-danger">
+                                          &nbsp;&nbsp;No data Found. please give the necessary
+                                          Input.
+                                        </span>
+                                    </div>
+                                    <div class="row filterLight2">
+                                        <div class="col-sm-2">
+                                            <div class="md-form">
+                                                <input placeholder="From Date" type="date" id="Fdate" class="form-control datepicker" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="md-form">
+                                                <input placeholder="To Date" type="date" id="Tdate" class="form-control datepicker" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2"></div>
+                                        <div class="col-sm-2">
+                                            <div class="md-form">
+                                                <button class="btn btn-primary btn-block btn-md fetch-button">
+                                                  <i class="fas fa-download"></i> Fetch Chart
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="md-form">
+                                                <button id="sidebarCollapse" class="btn btn-secondary1 btn-block btn-md" onclick="getCSVdata('filterLight2', 17)">
+                                                  <i class="fas fa-download"></i> Download as CSV
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <select class="custom-select md-form" required id="Fselect">
+                                              <option value="date">Daily</option>
+                                              <option value="month">Monthly</option>
+                                              <option value="year">Yearly</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div id="l2chart"></div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane" id="g3" role="tabpanel" aria-labelledby="deals-tab">
+                                    <div class="filterLight3" role="alert">
+                                        <span class="alert alert-danger">
+                                          &nbsp;&nbsp;No data Found. please give the necessary
+                                          Input.
+                                        </span>
+                                    </div>
+                                    <div class="row filterLight3">
+                                        <div class="col-sm-2">
+                                            <div class="md-form">
+                                                <input placeholder="From Date" type="date" id="Fdate" class="form-control datepicker" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="md-form">
+                                                <input placeholder="To Date" type="date" id="Tdate" class="form-control datepicker" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2"></div>
+                                        <div class="col-sm-2">
+                                            <div class="md-form">
+                                                <button class="btn btn-primary btn-block btn-md fetch-button">
+                                                  <i class="fas fa-download"></i> Fetch Chart
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="md-form">
+                                                <button id="sidebarCollapse" class="btn btn-secondary1 btn-block btn-md" onclick="getCSVdata('filterLight3', 18)">
+                                                  <i class="fas fa-download"></i> Download as CSV
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <select class="custom-select md-form" required id="Fselect">
+                                              <option value="date">Daily</option>
+                                              <option value="month">Monthly</option>
+                                              <option value="year">Yearly</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div id="l3chart"></div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="g4" role="tabpanel" aria-labelledby="deals-tab">
+                                    <div class="filterLight4" role="alert">
+                                        <span class="alert alert-danger">
+                                          &nbsp;&nbsp;No data Found. please give the necessary
+                                          Input.
+                                        </span>
+                                    </div>
+                                    <div class="row filterLight4">
+                                        <div class="col-sm-2">
+                                            <div class="md-form">
+                                                <input placeholder="From Date" type="date" id="Fdate" class="form-control datepicker" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="md-form">
+                                                <input placeholder="To Date" type="date" id="Tdate" class="form-control datepicker" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2"></div>
+                                        <div class="col-sm-2">
+                                            <div class="md-form">
+                                                <button class="btn btn-primary btn-block btn-md fetch-button">
+                                                  <i class="fas fa-download"></i> Fetch Chart
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="md-form">
+                                                <button id="sidebarCollapse" class="btn btn-secondary1 btn-block btn-md" onclick="getCSVdata('filterLight4', 19)">
+                                                  <i class="fas fa-download"></i> Download as CSV
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <select class="custom-select md-form" required id="Fselect">
+                                              <option value="date">Daily</option>
+                                              <option value="month">Monthly</option>
+                                              <option value="year">Yearly</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div id="l4chart"></div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane" id="g5" role="tabpanel" aria-labelledby="deals-tab">
+                                    <div class="filterLightAll" role="alert">
+                                        <span class="alert alert-danger">
+                                          &nbsp;&nbsp;No data Found. please give the necessary
+                                          Input.
+                                        </span>
+                                    </div>
+                                    <div class="row filterLightAll">
+                                        <div class="col-sm-2">
+                                            <div class="md-form">
+                                                <input placeholder="From Date" type="date" id="Fdate" class="form-control datepicker" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="md-form">
+                                                <input placeholder="To Date" type="date" id="Tdate" class="form-control datepicker" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2"></div>
+                                        <div class="col-sm-2">
+                                            <div class="md-form">
+                                                <button class="btn btn-primary btn-block btn-md fetch-button">
+                                                  <i class="fas fa-download"></i> Fetch Chart
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="md-form">
+                                                <button id="sidebarCollapse" class="btn btn-secondary1 btn-block btn-md" onclick="getCSVdata('filterLightAll', 51)">
+                                                  <i class="fas fa-download"></i> Download as CSV
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <select class="custom-select md-form" required id="Fselect">
+                                              <option value="date">Daily</option>
+                                              <option value="month">Monthly</option>
+                                              <option value="year">Yearly</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div id="l5chart"></div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane" id="g6" role="tabpanel" aria-labelledby="deals-tab">
+                                    <div class="filterLightZones" role="alert">
+                                        <span class="alert alert-danger">
+                                          &nbsp;&nbsp;No data Found. please give the necessary
+                                          Input.
+                                        </span>
+                                    </div>
+                                    <div class="row filterLightZones">
+                                        <div class="col-sm-2">
+                                            <div class="md-form">
+                                                <input placeholder="From Date" type="date" id="Fdate" class="form-control datepicker" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="md-form">
+                                                <input placeholder="To Date" type="date" id="Tdate" class="form-control datepicker" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2"></div>
+                                        <div class="col-sm-2">
+                                            <div class="md-form">
+                                                <button class="btn btn-primary btn-block btn-md fetch-button">
+                                                  <i class="fas fa-download"></i> Fetch Chart
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="md-form">
+                                                <button id="sidebarCollapse" class="btn btn-secondary1 btn-block btn-md" onclick="getCSVdata('filterLightZones', 60)">
+                                                  <i class="fas fa-download"></i> Download as CSV
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <select class="custom-select md-form" required id="Fselect">
+                                              <option value="date">Daily</option>
+                                              <option value="month">Monthly</option>
+                                              <option value="year">Yearly</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div id="l6chart"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <!----------------------------------------------------------------------------------------------------------------------------------------------->
+                    <div class="card bg-dark">
+                        <div class="col-sm-12 FAN">
+                            <ul class="nav nav-tabs" id="bologna-listF" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="#f1" role="tab" aria-controls="description" aria-selected="true" id="fn1">
+                                        <h6>Fan 1</h6>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#f2" role="tab" aria-controls="history" aria-selected="false" id="fn2">
+                                        <h6>Fan 2</h6>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#f3" role="tab" aria-controls="history" aria-selected="false" id="fn3">
+                                        <h6>All Fans</h6>
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <div class="tab-content bg-dark">
+                                <div class="tab-pane" id="f1" role="tabpanel" aria-labelledby="history-tab">
+                                    <div class="filterFan1" role="alert">
+                                        <span class="alert alert-danger">
+                                          &nbsp;&nbsp;No data Found. please give the necessary
+                                          Input.
+                                        </span>
+                                    </div>
+                                    <div class="row filterFan1">
+                                        <div class="col-sm-2">
+                                            <div class="md-form">
+                                                <input placeholder="From Date" type="date" id="Fdate" class="form-control datepicker" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="md-form">
+                                                <input placeholder="To Date" type="date" id="Tdate" class="form-control datepicker" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3"></div>
+                                        <div class="col-sm-2">
+                                            <div class="md-form">
+                                                <button id="sidebarCollapse" class="btn btn-secondary1 btn-block btn-md" onclick="getCSVdata('filterFan1', 25)">
+                                                  <i class="fas fa-download"></i> Download as CSV
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <select class="custom-select md-form" required id="Fselect">
+                                              <option value="date">Daily</option>
+                                              <option value="month">Monthly</option>
+                                              <option value="year">Yearly</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div id="f1chart"></div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane" id="f2" role="tabpanel" aria-labelledby="deals-tab">
+                                    <div class="filterFan2" role="alert">
+                                        <span class="alert alert-danger">
+                                          &nbsp;&nbsp;No data Found. please give the necessary
+                                          Input.
+                                        </span>
+                                    </div>
+                                    <div class="row filterFan2">
+                                        <div class="col-sm-2">
+                                            <div class="md-form">
+                                                <input placeholder="From Date" type="date" id="Fdate" class="form-control datepicker" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="md-form">
+                                                <input placeholder="To Date" type="date" id="Tdate" class="form-control datepicker" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3"></div>
+                                        <div class="col-sm-2">
+                                            <div class="md-form">
+                                                <button id="sidebarCollapse" class="btn btn-secondary1 btn-block btn-md" onclick="getCSVdata('filterFan2', 26)">
+                                                  <i class="fas fa-download"></i> Download as CSV
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <select class="custom-select md-form" required id="Fselect">
+                                              <option value="date">Daily</option>
+                                              <option value="month">Monthly</option>
+                                              <option value="year">Yearly</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div id="f2chart"></div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane" id="f3" role="tabpanel" aria-labelledby="deals-tab">
+                                    <div class="filterFanAll" role="alert">
+                                        <span class="alert alert-danger">
+                                          &nbsp;&nbsp;No data Found. please give the necessary
+                                          Input.
+                                        </span>
+                                    </div>
+                                    <div class="row filterFanAll">
+                                        <div class="col-sm-2">
+                                            <div class="md-form">
+                                                <input placeholder="From Date" type="date" id="Fdate" class="form-control datepicker" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="md-form">
+                                                <input placeholder="To Date" type="date" id="Tdate" class="form-control datepicker" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3"></div>
+                                        <div class="col-sm-2">
+                                            <div class="md-form">
+                                                <button id="sidebarCollapse" class="btn btn-secondary1 btn-block btn-md" onclick="getCSVdata('filterFanAll', 52)">
+                                                  <i class="fas fa-download"></i> Download as CSV
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <select class="custom-select md-form" required id="Fselect">
+                                              <option value="date">Daily</option>
+                                              <option value="month">Monthly</option>
+                                              <option value="year">Yearly</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div id="f3chart"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <!----------------------------------------------------------------------------------------------------------------------------------------------->
+                    <div class="card bg-dark">
+                        <div class="col-sm-12 FAN">
+                            <ul class="nav nav-tabs" id="bologna-listS" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="#T" role="tab" aria-controls="description" aria-selected="true" id="tn1">
+                                        <h6>Temperature</h6>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#H" role="tab" aria-controls="history" aria-selected="false" id="tn2">
+                                        <h6>Humidity</h6>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#Soil" role="tab" aria-controls="history" aria-selected="false" id="tn3">
+                                        <h6>Soil Moisture</h6>
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <div class="tab-content bg-dark">
+                                <div class="tab-pane" id="T" role="tabpanel" aria-labelledby="history-tab">
+                                    <div class="filterSen1" role="alert">
+                                        <span class="alert alert-danger">
+                                          &nbsp;&nbsp;No data Found. please give the necessary
+                                          Input.
+                                        </span>
+                                    </div>
+                                    <div class="row filterSen1">
+                                        <div class="col-sm-2">
+                                            <div class="md-form">
+                                                <input placeholder="From Date" type="date" id="Fdate" class="form-control datepicker" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="md-form">
+                                                <input placeholder="To Date" type="date" id="Tdate" class="form-control datepicker" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3"></div>
+                                        <div class="col-sm-2">
+                                            <div class="md-form">
+                                                <button id="sidebarCollapse" class="btn btn-secondary1 btn-block btn-md" onclick="getCSVdata('filterSen1', 30)">
+                                                  <i class="fas fa-download"></i> Download as CSV
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <select class="custom-select md-form" required id="Fselect">
+                                              <option value="date">Daily</option>
+                                              <option value="month">Monthly</option>
+                                              <option value="year">Yearly</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div id="s1chart"></div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane" id="H" role="tabpanel" aria-labelledby="deals-tab">
+                                    <div class="filterSen2" role="alert">
+                                        <span class="alert alert-danger">
+                                          &nbsp;&nbsp;No data Found. please give the necessary
+                                          Input.
+                                        </span>
+                                    </div>
+                                    <div class="row filterSen2">
+                                        <div class="col-sm-2">
+                                            <div class="md-form">
+                                                <input placeholder="From Date" type="date" id="Fdate" class="form-control datepicker" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="md-form">
+                                                <input placeholder="To Date" type="date" id="Tdate" class="form-control datepicker" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3"></div>
+                                        <div class="col-sm-2">
+                                            <div class="md-form">
+                                                <button id="sidebarCollapse" class="btn btn-secondary1 btn-block btn-md" onclick="getCSVdata('filterSen2', 31)">
+                                                  <i class="fas fa-download"></i> Download as CSV
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <select class="custom-select md-form" required id="Fselect">
+                                              <option value="date">Daily</option>
+                                              <option value="month">Monthly</option>
+                                              <option value="year">Yearly</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div id="s2chart"></div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane active" id="Soil" role="tabpanel">
+                                    <div class="filterSen3" role="alert">
+                                        <span class="alert alert-danger">
+                                          &nbsp;&nbsp;No data Found. please give the necessary
+                                          Input.
+                                        </span>
+                                    </div>
+                                    <div class="row filterSen3">
+                                        <div class="col-sm-2">
+                                            <div class="md-form">
+                                                <input placeholder="From Date" type="date" id="Fdate" class="form-control datepicker" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <div class="md-form">
+                                                <input placeholder="To Date" type="date" id="Tdate" class="form-control datepicker" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3"></div>
+                                        <div class="col-sm-2">
+                                            <div class="md-form">
+                                                <button id="sidebarCollapse" class="btn btn-secondary1 btn-block btn-md" onclick="getCSVdata('filterSen3', 32)">
+                                                  <i class="fas fa-download"></i> Download as CSV
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <select class="custom-select md-form" required id="Fselect">
+                                              <option value="date">Daily</option>
+                                              <option value="month">Monthly</option>
+                                              <option value="year">Yearly</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div id="s3chart"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p>
+                        This is some text to adjust the space.This is some text to adjust the space.This is some text to adjust the space.This is some text to adjust the space.This is some text to adjust the space.
+                    </p>
+                    <br /><br /><br />
+                    <!----------------------------------------------------------------------------------------------------------------------------------------------->
+                </div>
+            </div>
+
+            <footer>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="container">
+                            <div id="go-top" class="container text-center">
+                                <a href="#hom"><img src="https://img.icons8.com/dusk/64/000000/circled-chevron-up.png" alt="whoosh"></a>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="ico text-center">
+                                        <a class="" target="_blank" href="http://instagram.com/_lavankumar_/"><i class="fab fa-instagram fa-lg"></i></a>
+                                        <a class="" target="_blank" href="https://www.facebook.com/profile.php?id=100009303211539"><i class="fab fa-facebook-square fa-lg"></i></a>
+                                        <a class="" target="_blank" href="https://www.linkedin.com/in/lavankumarch179/"><i class="fab fa-linkedin fa-lg"></i></a>
+                                        <a class="" target="_blank" href="https://github.com/lavank179"><i class="fab fa-github fa-lg"></i></a>
+                                        <a class="" target="_blank" href="mailto:chlavankumar179@gmail.com"><i class="far fa-envelope-open fa-lg"></i></a>
+                                        <a style="font-weight: 500;">© Copyright 2022 - Lavan Kumar CH & Sela Kaushik & Rajesh M</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <div aria-live="polite" aria-atomic="true" class="position-fixed top-0 right-0" style="z-index: 5; right: 0; top: 15%;">
+                <div id="liveToast1" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000">
+                    <div class="toast-header">
+                        <h5 class="rounded mr-2 mt-1" style="width: 10%; background-color: red; color: red;">o</h5>
+                        <strong class="mr-auto">Server Status</strong>
+                        <small>0 mins ago</small>
+                        <button type="button" class="close pl-1" data-dismiss="toast" aria-label="Close">&times;</button>
+                    </div>
+                    <div class="toast-body" style="color: red;"></div>
+                </div>
+                <div id="liveToast2" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000">
+                    <div class="toast-header">
+                        <h5 class="rounded mr-2 mt-1" style="width: 10%; background-color: green; color: green;">o</h5>
+                        <strong class="mr-auto">Server Status</strong>
+                        <small>0 mins ago</small>
+                        <button type="button" class="close pl-1" data-dismiss="toast" aria-label="Close">&times;</button>
+                    </div>
+                    <div class="toast-body" style="color: green;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+    <script src="../assets/apexcharts/dist/apexcharts.js"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+    <script async="" defer="" onload="this.onload=function(){};handleClientLoad()" onreadystatechange="if (this.readyState === 'complete') this.onload()" src="https://apis.google.com/js/api.js"></script>
+
+    <script src="../js/authUI/oauthGoogle.js"></script>
+    <script type="text/javascript" src="../js/visualize.js"></script>
+    <script type="text/javascript" src="../js/chartsLight.js"></script>
+    <script type="text/javascript" src="../js/chartsFan.js"></script>
+</body>
+
+</html>

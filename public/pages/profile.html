@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marvel IoT</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../assets/MDBootstrap-pro/MDB-Pro_4.11.0/css/mdb.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="shortcut icon" href="../assets/images/favicon.ico" />
+    <script src="../assets/MDBootstrap-pro/MDB-Pro_4.11.0/js/mdb.min.js"></script>
+
+    <link rel="stylesheet" href="../css/styl.css" />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/charts.css" />
+</head>
+
+<body id="hom">
+    <div class="wrapper">
+        <!-- Sidebar Holder -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <p>
+                    <img width="100%" height="100%" src="../assets/images/logo3.jpg" alt="marvel iot" />
+                </p>
+            </div>
+            <br />
+            <ul class="list-unstyled components men">
+                <li class="nav-item">
+                    <a class="home" href="home.html"><i class="fas fa-home"></i> Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="visualise" href="visualize.html"><i class="far fa-chart-bar"></i> Visualise
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="profile" href="profile.html"><i class="far fa-address-card"></i> Profile
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="contact" href="contact.html"><i class="fas fa-phone-square-alt"></i> Contact
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content Holder -->
+        <div id="content">
+            <nav class="navbar navbar-expand-lg navbar-light sticky-top" id="topNAV">
+                <button id="sidebarCollapse" class="btn btn-sm btn-outline-primary shadow-none">
+                    <i class="fas fa-align-left"></i>
+                </button>
+
+                <h3 class="ml-auto mr-auto" id="mobile-head">Marvel IoT</h3>
+                <button class="d-inline-block d-lg-none ml-auto btn btn-sm btn-outline-primary shadow-none" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-align-right"></i>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link btn-rounded1 btn btn-sm btn-outline-primary shadow-none" onclick="RefreshAll();" data-toggle="popover" data-content="Refresh All" data-placement="bottom" data-trigger="hover">
+                                <i class="fas fa-sync-alt d-inline"></i>
+                                <div class="d-lg-none d-md-block d-sm-block d-inline">
+                                    Refresh all data
+                                </div>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn-rounded1 btn btn-sm btn-outline-primary shadow-none" data-toggle="popover" data-content="Notifications" data-placement="bottom" data-trigger="hover">
+                                <i class="far fa-bell d-inline"></i>
+                                <div class="d-lg-none d-md-block d-sm-block d-inline">
+                                    Notifications
+                                </div>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn-rounded1 btn btn-sm btn-outline-primary shadow-none" data-toggle="popover" data-content="User Details" data-placement="bottom" data-trigger="hover">
+                                <i class="fas fa-user-circle d-inline"></i>
+                                <div class="d-lg-none d-md-block d-sm-block d-inline">
+                                    User Details
+                                </div>
+                            </a>
+                        </li>
+                        <li class="nav-item" id="logoutBTN1">
+                            <a class="nav-link btn-rounded1 btn btn-sm btn-outline-primary shadow-none" onclick="logout();" data-toggle="popover" data-content="Logout" data-placement="bottom" data-trigger="hover">
+                                <i class="fas fa-sign-out-alt d-inline"></i>
+                                <div class="d-lg-none d-md-block d-sm-block d-inline">
+                                    Logout
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="nav-item" id="logoutBTN2">
+                            <button class="btn btn-rounded1 btn-outline-primary btn-block" id="signout_button" style="display: none" data-toggle="popover" data-content="Logout from Google" data-placement="bottom" data-trigger="hover">
+                              <div style="color: black; font-weight: bold; margin-left: 30px;">SignOut</div></button>
+                            <p id="authorize_button" style="display: none"></p>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="container-fluid">
+                <div id="profile">
+                    <div align="center" id="profile-pic1">
+                        <i class="material-icons" style="font-size: 60px; color: black">account_circle</i>
+                    </div>
+                    <div align="center" id="profile-pic2">
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-6">
+                            <div class="card" style="background-color: black; color: white">
+                                <div class="card-content text-left">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div id="center">
+                                                <h1 align="center">Your Profile</h1>
+
+                                                <div id="contentbox" style="font-size: 20px;">
+                                                    <div id="signup">
+                                                        <div id="signup-st">
+                                                            <table border="0" align="center" cellpadding="2" cellspacing="0" id="userDetails"></table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3"></div>
+                    </div>
+                    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                    <p>
+                        This is some text to adjust the space.This is some text to adjust the space.This is some text to adjust the space.This is some text to adjust the space.This is some text to adjust the space.
+                    </p>
+                    <br /><br /><br />
+                </div>
+            </div>
+
+            <footer>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="container">
+                            <div id="go-top" class="container text-center">
+                                <a href="#hom"><img src="https://img.icons8.com/dusk/64/000000/circled-chevron-up.png" alt="whoosh"></a>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="ico text-center">
+                                        <a class="" target="_blank" href="http://instagram.com/_lavankumar_/"><i class="fab fa-instagram fa-lg"></i></a>
+                                        <a class="" target="_blank" href="https://www.facebook.com/profile.php?id=100009303211539"><i class="fab fa-facebook-square fa-lg"></i></a>
+                                        <a class="" target="_blank" href="https://www.linkedin.com/in/lavankumarch179/"><i class="fab fa-linkedin fa-lg"></i></a>
+                                        <a class="" target="_blank" href="https://github.com/lavank179"><i class="fab fa-github fa-lg"></i></a>
+                                        <a class="" target="_blank" href="mailto:chlavankumar179@gmail.com"><i class="far fa-envelope-open fa-lg"></i></a>
+                                        <a style="font-weight: 500;">© Copyright 2022 - Lavan Kumar CH & Sela Kaushik & Rajesh M</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <div aria-live="polite" aria-atomic="true" class="position-fixed top-0 right-0" style="z-index: 5; right: 0; top: 15%;">
+                <div id="liveToast1" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000">
+                    <div class="toast-header">
+                        <h5 class="rounded mr-2 mt-1" style="width: 10%; background-color: red; color: red;">o</h5>
+                        <strong class="mr-auto">Server Status</strong>
+                        <small>0 mins ago</small>
+                        <button type="button" class="close pl-1" data-dismiss="toast" aria-label="Close">&times;</button>
+                    </div>
+                    <div class="toast-body" style="color: red;"></div>
+                </div>
+                <div id="liveToast2" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000">
+                    <div class="toast-header">
+                        <h5 class="rounded mr-2 mt-1" style="width: 10%; background-color: green; color: green;">o</h5>
+                        <strong class="mr-auto">Server Status</strong>
+                        <small>0 mins ago</small>
+                        <button type="button" class="close pl-1" data-dismiss="toast" aria-label="Close">&times;</button>
+                    </div>
+                    <div class="toast-body" style="color: green;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+    <script src="../assets/apexcharts/dist/apexcharts.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+
+    <script async="" defer="" onload="this.onload=function(){};handleClientLoad()" onreadystatechange="if (this.readyState === 'complete') this.onload()" src="https://apis.google.com/js/api.js"></script>
+    <script src="../js/authUI/oauthGoogle.js"></script>
+    <script type="text/javascript">
+        var userid = localStorage.getItem("user-email");
+        if (userid == "" || userid == null) {
+            document.body.innerHTML = "";
+            alert("Current Valid Session is not found! please login to continue.");
+            window.location.href = `../`;
+        } else {
+            function logout() {
+                let isExecuted = confirm("Are you sure want to logout?");
+                if (isExecuted) {
+                    localStorage.setItem("user-email", "");
+                    alert("Logged out successfully!!!");
+                    window.location.href = "../";
+                } else {
+                    console.log("Not logged out! Staying here.");
+                }
+            }
+
+            function logoutBTNS() {
+                if (googleSign) {
+                    document.querySelector("#logoutBTN1").style.display = 'none';
+                    document.querySelector("#logoutBTN2").style.display = 'block';
+                    document.querySelector("#profile-pic1").style.display = 'none';
+                    document.querySelector("#profile-pic2").style.display = 'block';
+                    getUserDetails().then((data) => {
+                        console.log(data);
+                        let str = "";
+                        str +=
+                            "<tr id='lg-1'><td>Google Id        :    " + data.id + "</td></tr>";
+                        str +=
+                            "<tr id='lg-1'><td>Name             :    " + data.name + "</td></tr>";
+                        str +=
+                            "<tr id='lg-1'><td>Email Id         :    " +
+                            data.email +
+                            "</td></tr>";
+                        str +=
+                            "<tr id='lg-1'><td>Phone no         :    " +
+                            "No number Provided" +
+                            "</td></tr>";
+                        document.querySelector("#userDetails").innerHTML = str;
+
+                        let image = document.createElement("img");
+
+                        image.src = data.picture;
+                        image.style.borderRadius = "50%";
+                        document.querySelector("#profile-pic2").append(image);
+
+                    });
+                } else {
+                    document.querySelector("#logoutBTN2").style.display = 'none';
+                    document.querySelector("#logoutBTN1").style.display = 'block';
+                    document.querySelector("#profile-pic2").style.display = 'none';
+                    document.querySelector("#profile-pic1").style.display = 'block';
+                    $.ajax({
+                        url: "/controller/chartArea/userDetails",
+                        method: "POST",
+                        async: false,
+                        data: {
+                            email: "chlavankumar179@gmail.com"
+                        },
+                        success: function(data) {
+                            data.forEach((row) => {
+                                let str = "";
+                                str +=
+                                    "<tr id='lg-1'><td>Name        :    " + row.name + "</td></tr>";
+                                str +=
+                                    "<tr id='lg-1'><td>Email Id    :    " +
+                                    row.email +
+                                    "</td></tr>";
+                                str +=
+                                    "<tr id='lg-1'><td>Phone no    :    " +
+                                    row.phone +
+                                    "</td></tr>";
+                                str +=
+                                    "<tr id='lg-1'><td>Created     :    " +
+                                    new Date(row.timed) +
+                                    "</td></tr>";
+                                document.querySelector("#userDetails").innerHTML = str;
+                            });
+                        },
+                    });
+                }
+            }
+            //smooth scroll onclick nav-link
+            $('footer a[href*="#"]').on("click", function(e) {
+                e.preventDefault();
+
+                $("html, body").animate({
+                        scrollTop: $($(this).attr("href")).offset().top,
+                    },
+                    500,
+                    "linear"
+                );
+            });
+            //sign out the current user
+            function Logout() {
+                window.location.href = "./controllers/auth/logout.php";
+            }
+            // Popovers
+            $(function() {
+                $('[data-toggle="popover"]').popover();
+            });
+            // Material Select Initialization
+            $(document).ready(function() {
+                $(".mdb-select").materialSelect();
+            });
+            $(document).ready(function() {
+                $("#sidebarCollapse").on("click", function() {
+                    $("#sidebar").toggleClass("active");
+                });
+            });
+        }
+    </script>
+</body>
+
+</html>
