@@ -59,12 +59,12 @@ class LightsFans {
         await result.forEach((row) => {
             let val2;
             if (type == "Light") {
-                val2 = Number((row.powers).toFixed(3));
+                val2 = Number((row.powers)).toFixed(3);
             } else {
                 val2 = Number(row.etime) - Number(row.stime);
                 val2 = val2 * (80 / 3600);
             }
-            table.push([type + (row.id).toString(), val2]);
+            table.push([type + (row.id).toString(), Number(val2)]);
         });
         return table;
     }

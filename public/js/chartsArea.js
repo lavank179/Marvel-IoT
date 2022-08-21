@@ -68,6 +68,7 @@ function TempLevel() {
         async: false,
         data: { tempmoist: "apiloaded" },
         success: function(data) {
+            console.log(data)
             let dat = data;
             let li1 = [],
                 li2 = [];
@@ -81,6 +82,7 @@ function TempLevel() {
                     li2.push({ x: dat[3][u], y: dat[2][u] });
                 }
             }
+            console.log()
             chart.updateSeries([
                 { name: "Lights", data: li1 },
                 { name: "Fans", data: li2 },

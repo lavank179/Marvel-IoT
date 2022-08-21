@@ -20,7 +20,7 @@ class ChartArea {
         });
     }
 
-    async formatData(query1, query2) {
+    async formatData(query1, query2, type) {
         let table = [];
         table[0] = [];
         table[1] = [];
@@ -29,21 +29,24 @@ class ChartArea {
 
         let r1 = await this.executeQuery(query1);
         await r1.forEach((row, i) => {
-            table[0][i] = Number((row.powers)).toFixed(2);
+            if (type == "lf") table[0][i] = Number((row.powers)).toFixed(2);
+            else table[0][i] = Number((row.temperature)).toFixed(2);
             table[1][i] = date.format(new Date(row.etime), 'YYYY-MM-DD') + "IST";
         });
         r1 = await this.executeQuery(query2);
         await r1.forEach((row, i) => {
-            table[2][i] = Number((row.powers)).toFixed(2);
+            if (type == "lf") table[2][i] = Number((row.powers)).toFixed(2);
+            else table[2][i] = Number((row.moisture)).toFixed(2);
             table[3][i] = date.format(new Date(row.etime), 'YYYY-MM-DD') + "IST";
         });
+        console.log(table);
 
         return table;
     }
     async getLightFan() {
         return new Promise(async(resolve, reject) => {
             try {
-                resolve(await this.formatData("SELECT SUM(total) AS powers, endTime AS etime FROM `p2_lights` GROUP BY date(timed) limit 5", "SELECT SUM(total) AS powers, endTime AS etime FROM `p2_fans` GROUP BY date(timed) limit 5"));
+                resolve(await this.formatData("SELECT SUM(total) AS powers, endTime AS etime FROM `p2_lights` GROUP BY date(timed) limit 5", "SELECT SUM(total) AS powers, endTime AS etime FROM `p2_fans` GROUP BY date(timed) limit 5", "lf"));
             } catch (err) {
                 reject(err);
             }
@@ -52,7 +55,7 @@ class ChartArea {
     async getTempMoist() {
         return new Promise(async(resolve, reject) => {
             try {
-                resolve(await this.formatData("SELECT SUM(temperature) AS temperature, timed AS etime FROM `p2_sensors` limit 5", "SELECT SUM(moisture) AS moisture, timed AS etime FROM `p2_sensors` limit 5"));
+                resolve(await this.formatData("SELECT temperature AS temperature, timed AS etime FROM `p2_sensors` ORDER BY timed DESC limit 5", "SELECT moisture as moisture, timed AS etime FROM `p2_sensors` ORDER BY timed DESC limit 5", "sensor"));
             } catch (err) {
                 reject(err);
             }

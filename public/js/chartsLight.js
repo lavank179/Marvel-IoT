@@ -3,6 +3,7 @@ $(document).ready(function() {
     document.querySelectorAll(".fetch-button").forEach((item, i) => {
         item.addEventListener("click", (event) => {
             console.log(item, i);
+            console.log(input_data_arr[i]);
             if(input_data_arr[i][0].length == 10 && input_data_arr[i][1].length == 10) getDataAll(...input_data_arr[i]);
             else alert("Please give all the input details completely!");
         });
@@ -163,7 +164,7 @@ $(document).ready(function() {
     setInterval(function() {
         let [v1, v2, v3] = getInputValues("filterLightAll");
         changeAlert("filterLightAll", v1, v2, v3);
-        input_data_arr[4] = [v1, v2, v3, 50, "All input_data_arr Total", "l5chart", "lights"];
+        input_data_arr[4] = [v1, v2, v3, 50, "All lights Total", "l5chart", "lights"];
     }, 500);
 });
 
@@ -172,7 +173,7 @@ $(document).ready(function() {
     setInterval(function() {
         let [v1, v2, v3] = getInputValues("filterLightZones");
         changeAlert("filterLightAll", v1, v2, v3);
-        input_data_arr[5] = [v1, v2, v3, 60, "All input_data_arr Zones", "l6chart", "lights"];
+        input_data_arr[5] = [v1, v2, v3, 60, "All lights Zones", "l6chart", "lights"];
     }, 500);
 });
 
