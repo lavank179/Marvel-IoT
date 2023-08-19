@@ -284,6 +284,10 @@
                                 document.querySelector("#userDetails").innerHTML = str;
                             });
                         },
+                        error: (data) => {
+                            console.log(data);
+                            alert(data);
+                        }
                     });
                 }
             }

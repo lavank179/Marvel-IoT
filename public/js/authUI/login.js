@@ -97,9 +97,13 @@ if (userid != "" && userid != null) {
           window.location.href = `../../pages/home.html`;
         }
         else {
-          alert(" Http request or Network Error!");
+          alert(" Http request or Network Error! Please contact admin or developer. Details https://www.linkedin.com/in/lavankumarch179/");
         }
       },
+      error: (data) => {
+        console.log(data);
+        alert(data);
+      }
     });
   }
 

@@ -40,6 +40,10 @@ function lightFan() {
                 { name: "Fans", data: li2 },
             ]);
         },
+        error: (data) => {
+            console.log(data);
+            alert(data);
+        }
     });
 }
 
@@ -88,6 +92,10 @@ function TempLevel() {
                 { name: "Fans", data: li2 },
             ]);
         },
+        error: (data) => {
+            console.log(data);
+            alert(data);
+        }
     });
 }
 
@@ -106,5 +114,9 @@ function weatherTable() {
                 document.querySelector("#weatherTable").appendChild(tr);
             });
         },
+        error: (data) => {
+            console.log(data);
+            alert(data);
+        }
     });
 }

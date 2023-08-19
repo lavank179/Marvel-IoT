@@ -42,7 +42,7 @@ node_modules/
 jspm_packages/
 
 #db credentials not uploading
-db/
+db/db_credentials.json
 #third-party dependancies and libraries
 public/assets/apexcharts/
 public/assets/MDBootstrap-pro/

@@ -1,25 +1,11 @@
 // users hardcoded for simplicity, store in a db for production applications
 // const users = require('../users.json')
-const conn = require('../db/db_config.js');
+const db_factory = require('../db/database_factory.js');
 
 class UserService {
     //sql query final execution single function
     async executeQuery(sql) {
-        return new Promise(async (resolve, reject) => {
-            // conn.con.query(sql, (err, rows, fields) => {
-            //     if (err) {
-            //         reject(err.sqlMessage);
-            //     } else {
-            //         resolve(rows);
-            //     }
-            // });
-            const result = await conn.loadDataLavan(sql);
-            if(result){
-                resolve(result);
-            } else {
-                reject(result);
-            }
-        });
+        return await db_factory.executeQuery(sql);
     }
 
     async authenticate(input) {

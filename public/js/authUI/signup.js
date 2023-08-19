@@ -143,6 +143,10 @@ if (userid != "" && userid != null) {
           alert("Some error has occured! please try again");
         }
       },
+      error: (data) => {
+        console.log(data);
+        alert(data);
+    }
     });
   }
 

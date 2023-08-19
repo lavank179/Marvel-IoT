@@ -1,24 +1,10 @@
 const res = require('express/lib/response');
-const conn = require('../db/db_config.js');
+const conn = require('../db/database_factory.js');
 const date = require('date-and-time');
 class LightsFans {
     //sql query final execution single function
     async executeQuery(sql) {
-        return new Promise(async (resolve, reject) => {
-            // conn.con.query(sql, (err, rows, fields) => {
-            //     if (err) {
-            //         reject(err.sqlMessage);
-            //     } else {
-            //         resolve(rows);
-            //     }
-            // });
-            const result = await conn.loadDataLavan(sql);
-            if(result){
-                resolve(result);
-            } else {
-                reject(result);
-            }
-        });
+        return await db_factory.executeQuery(sql);
     }
 
     async getQueryLights(Did, from, to, filter) {
@@ -152,8 +138,10 @@ class LightsFans {
     }
 
     async fetchLights(input) {
+        console.log("yes");
         let query = await this.getQueryLights(Number(input.Did), input.fDate, input.tDate, input.fils);
         let result = await this.executeQuery(query);
+        //console.log(result);
         if (Number(input.Did) == 60) return await this.formatAllData(result, "Light");
         else return await this.formatLimitedDate(result, "Light");
     }

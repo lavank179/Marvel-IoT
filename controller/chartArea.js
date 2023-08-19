@@ -1,23 +1,9 @@
-const conn = require('../db/db_config.js');
+const db_factory = require('../db/database_factory.js');
 const date = require('date-and-time');
 class ChartArea {
     //sql query final execution single function
     async executeQuery(sql) {
-        return new Promise(async(resolve, reject) => {
-            // conn.con.query(sql, (err, rows, fields) => {
-            //     if (err) {
-            //         reject(err.sqlMessage);
-            //     } else {
-            //         resolve(rows);
-            //     }
-            // });
-            const result = await conn.loadDataLavan(sql);
-            if(result){
-                resolve(result);
-            } else {
-                reject(result);
-            }
-        });
+        return await db_factory.executeQuery(sql);
     }
 
     async formatData(query1, query2, type) {

@@ -2,7 +2,7 @@ const express = require("express"); // importing express library for server crea
 const cors = require("cors"); // importing cors library.
 const path = require("path");
 const bodyParser = require("body-parser"); // importing req body parser
-const conn = require("./db/db_config");
+const conn = require("./db/database_factory");
 
 const app = express(); // creating express object - app.
 app.use(cors()); // using cors to Allow or Enable all the Cross-Origin requests or endpoints.

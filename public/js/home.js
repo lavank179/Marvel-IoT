@@ -93,6 +93,10 @@ if (userid == "" || userid == null) {
             success: function(data) {
                 d1 = data;
             },
+            error: (data) => {
+                console.log(data);
+                alert(data);
+            }
         });
         return d1;
     }
@@ -122,6 +126,10 @@ if (userid == "" || userid == null) {
                     );
                 }
             },
+            error: (data) => {
+                console.log(data);
+                alert(data);
+            }
         });
     }
     // print row element
@@ -210,6 +218,10 @@ if (userid == "" || userid == null) {
             success: function(data) {
                 console.log(id + " is " + val + " : " + data);
             },
+            error: (data) => {
+                console.log(data);
+                alert(data);
+            }
         });
     }
     // remove switch button selected
@@ -234,6 +246,10 @@ if (userid == "" || userid == null) {
                             success: function(data) {
                                 s = data;
                             },
+                            error: (data) => {
+                                console.log(data);
+                                alert(data);
+                            }
                         });
                         if (s == "success") {
                             e.target.parentElement.parentElement.parentElement.remove();

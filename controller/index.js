@@ -1,5 +1,5 @@
 var router = require('express').Router();
-const conn = require('../db/db_config.js');
+const conn = require('../db/database_factory.js');
 const getData = require('./controller');
 const chartArea = require('./chartArea');
 const lightsFans = require('./lights_fans');
